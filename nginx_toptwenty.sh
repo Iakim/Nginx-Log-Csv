@@ -32,4 +32,5 @@ sed -i 's/.\{2\}$//' "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/li
 sed -i "s/$/'&/" "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/lista.txt"
 sed -i "s/^/'/" "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/lista.txt"
 rm -rf "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/lista1.txt"
+rm -rf "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/ips1.txt"
 sh robots.sh
