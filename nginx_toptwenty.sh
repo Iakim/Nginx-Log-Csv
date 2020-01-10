@@ -23,7 +23,8 @@ do
         sort "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/access_portal_log-"$ano""$mes""$diaant"_sinvp-0$nginx" | awk '{print$1}' | uniq -c | sort -n -t: -k1 | tail -n20 > "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/"$ano""$mes""$diaant"_sinvp-0$nginx.txt"
         cat "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/"$ano""$mes""$diaant"_sinvp-0$nginx.txt" | awk '{print$2}' >> "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/lista1.txt"
 done
-
+cp "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/lista1.txt" "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/ips1.txt"
+cat "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/ips1.txt" | awk 'BEGIN { ORS = " " } { print }' > "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/ips.txt"
 sed -i 's/$/ \\| &/' "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/lista1.txt"
 cat "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/lista1.txt" | awk 'BEGIN { ORS = " " } { print }' > "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/lista.txt"
 sed -i -r 's/\s+//g' "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/lista.txt"
@@ -31,3 +32,4 @@ sed -i 's/.\{2\}$//' "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/li
 sed -i "s/$/'&/" "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/lista.txt"
 sed -i "s/^/'/" "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/lista.txt"
 rm -rf "/home/isaac/ISAAC - DOCS/IMPRENSA/NGINX/$ano$mes$diaant/lista1.txt"
+sh robots.sh
