@@ -39,15 +39,6 @@ echo "
 
 
 
-
-
-
-
-
-
-
-
-
 " > $ano$mesn$diaant/planilha.csv
 
 ipsproc=`cat $ano$mesn$diaant/ips.txt`
