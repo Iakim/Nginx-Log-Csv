@@ -13,7 +13,7 @@ else
         diaant=`echo $zero$(($dia-1))`
 fi
 
-touch planilha.csv
+touch $ano$mesn$diaant/planilha.csv
 echo "
 
 
@@ -48,18 +48,18 @@ echo "
 
 
 
-" > planilha.csv
+" > $ano$mesn$diaant/planilha.csv
 
 ipsproc=`cat $ano$mesn$diaant/ips.txt`
 
 for ip in $ipsproc
 do
-	grep -R $ip $ano$mesn$diaant/*-$ano-* | cut -d '-' -f 4 | awk '{print$1,$2}' | sed 's/:/,/' > $ip.ok
-	sed -i 's/$/ ; &/' $ip.ok
-	echo "" >> $ip.ok
+	grep -R $ip $ano$mesn$diaant/*-$ano-* | cut -d '-' -f 4 | awk '{print$1,$2}' | sed 's/:/,/' > $ano$mesn$diaant/$ip.ok
+	sed -i 's/$/;&/' $ano$mesn$diaant/$ip.ok
+	echo "" >> $ano$mesn$diaant/$ip.ok
 	for hora in 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23
 	do
-		hit=`cat $ip.ok | grep "$hora," | wc -l`
+		hit=`cat $ano$mesn$diaant/$ip.ok | grep "$hora," | wc -l`
 		if [ $hora -eq "08" ]; then
 			linha=9
 		else
@@ -70,20 +70,21 @@ do
 			fi
 		fi
 		if [ $hit -eq 0 ]; then
-			sed -i "$linha i $hora, 0;" $ip.ok
+			sed -i "$linha i $hora, 0;" $ano$mesn$diaant/$ip.ok
 		else
 			echo " " > /dev/null
 		fi
 	done
-	sed -i '/^$/d' $ip.ok
-	sed -i "1 i hora, $ip;" $ip.ok
-	cat $ip.ok | awk '{print$2,$3}' >> $ip.okok
-	rm -rf $ip.ok
-	mv $ip.okok $ip.ok
+	sed -i '/^$/d' $ano$mesn$diaant/$ip.ok
+	sed -i "1 i hora, $ip;" $ano$mesn$diaant/$ip.ok
+	cat $ano$mesn$diaant/$ip.ok | awk '{print$2,$3}' >> $ano$mesn$diaant/$ip.okok
+	rm -rf $ano$mesn$diaant/$ip.ok
+	mv $ano$mesn$diaant/$ip.okok $ano$mesn$diaant/$ip.ok
 	for line in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
 	do
-		linhaadd=`awk "FNR==$line" $ip.ok`
-		sed -i "$line s/$/ $linhaadd/" planilha.csv
+		linhaadd=`awk "FNR==$line" $ano$mesn$diaant/$ip.ok`
+		sed -i "$line s/$/ $linhaadd/" $ano$mesn$diaant/planilha.csv
 	done
 done
-rm -rf *.ok
+rm -rf $ano$mesn$diaant/*-$ano-*
+rm -rf $ano$mesn$diaant/*.ok
