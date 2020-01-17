@@ -1,3 +1,11 @@
+#/bin/bahs
+###################################################################################
+## Nginx-Log-Csv 						   		 ##
+## Script bash for create a graph from csv of processing of logs nginx/apache	 ##
+## Author: https://github.com/Iakim 				    		 ##
+## Simplicity is the ultimate degree of sophistication		    		 ##
+###################################################################################
+
 ano=`date +%Y`
 mes=`date +%b`
 dia=`date +%e`
