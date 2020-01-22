@@ -88,5 +88,32 @@ do
 		sed -i "$line s/$/ $linhaadd/" $ano$mesn$diaant/planilha.csv
 	done
 done
+sed -i "1 s/^/Hora;/" $ano$mesn$diaant/planilha.csv
+sed -i "2 s/^/0;/" $ano$mesn$diaant/planilha.csv
+sed -i "3 s/^/1;/" $ano$mesn$diaant/planilha.csv
+sed -i "4 s/^/2;/" $ano$mesn$diaant/planilha.csv
+sed -i "5 s/^/3;/" $ano$mesn$diaant/planilha.csv
+sed -i "6 s/^/4;/" $ano$mesn$diaant/planilha.csv
+sed -i "7 s/^/5;/" $ano$mesn$diaant/planilha.csv
+sed -i "8 s/^/6;/" $ano$mesn$diaant/planilha.csv
+sed -i "9 s/^/7;/" $ano$mesn$diaant/planilha.csv
+sed -i "10 s/^/8;/" $ano$mesn$diaant/planilha.csv
+sed -i "11 s/^/9;/" $ano$mesn$diaant/planilha.csv
+sed -i "12 s/^/10;/" $ano$mesn$diaant/planilha.csv
+sed -i "13 s/^/11;/" $ano$mesn$diaant/planilha.csv
+sed -i "14 s/^/12;/" $ano$mesn$diaant/planilha.csv
+sed -i "15 s/^/13;/" $ano$mesn$diaant/planilha.csv
+sed -i "16 s/^/14;/" $ano$mesn$diaant/planilha.csv
+sed -i "17 s/^/15;/" $ano$mesn$diaant/planilha.csv
+sed -i "18 s/^/16;/" $ano$mesn$diaant/planilha.csv
+sed -i "19 s/^/17;/" $ano$mesn$diaant/planilha.csv
+sed -i "20 s/^/18;/" $ano$mesn$diaant/planilha.csv
+sed -i "21 s/^/19;/" $ano$mesn$diaant/planilha.csv
+sed -i "22 s/^/20;/" $ano$mesn$diaant/planilha.csv
+sed -i "23 s/^/21;/" $ano$mesn$diaant/planilha.csv
+sed -i "24 s/^/22;/" $ano$mesn$diaant/planilha.csv
+sed -i "25 s/^/23;/" $ano$mesn$diaant/planilha.csv
+
 rm -rf $ano$mesn$diaant/*-$ano-*
 rm -rf $ano$mesn$diaant/*.ok
+rm -rf $ano$mesn$diaant/access_portal_log-"$ano$mesn$diaant"_nginx
